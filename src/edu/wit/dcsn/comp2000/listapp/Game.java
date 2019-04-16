@@ -16,6 +16,7 @@ public class Game {
     private ArrayList<Player> players;
     private static boolean donePlaying = false;
     private int numPlayers;
+    private Pile pot;
 
 
     public Game() {
@@ -53,7 +54,37 @@ public class Game {
      * Each active player plays top card
      */
     public void play() {
-
+    	// Reset pot
+    	while(!pot.isEmpty()) {
+    		pot.remove();
+    	}
+    	
+    	Card topCard = null; 
+    	boolean war = false;
+    	Player topPlayer = null;
+    	Player tiedPlayer = null;
+    	
+    	for(int i = 0; i < players.size(); i++) {
+    		players.get(i).playCard();
+    		
+    		if(topCard == null) {
+    			topPlayer = players.get(i);
+    			topCard = players.get(i).getPlayedCard();
+    		} else if(players.get(i).getPlayedCard().compareTo(topCard) > 0) {
+    			topPlayer = players.get(i);
+    			topCard = players.get(i).getPlayedCard();
+    			war = false;
+    		} else if(players.get(i).getPlayedCard().equals(topCard)) {
+    			tiedPlayer = players.get(i);
+    			war = true;
+    		}
+    	}
+    	
+    	if(war) {
+    		war(topPlayer, tiedPlayer);
+    	} else {
+    		take();
+    	}
     }
 
     /**
