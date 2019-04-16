@@ -19,10 +19,7 @@
 
 package edu.wit.dcsn.comp2000.listapp;
 
-import java.util.Collections;
-import java.util.EmptyStackException;
-import java.util.LinkedList;
-import java.util.List ;
+import java.util.*;
 
 /**
  * @author Michael Rivnak
@@ -33,7 +30,7 @@ public class Pile
 	{
 	private List<Card> cards ;
 	// instantiate this using either the JCL's ArrayList or LinkedList
-	
+	int numCards;
 
 	/**
 	 * 
@@ -42,6 +39,7 @@ public class Pile
 		{
 		// TODO Auto-generated constructor stub
 		cards = new LinkedList<>();
+		numCards = 0;
 		
 		}	// end constructor
 
@@ -69,6 +67,7 @@ public class Pile
 	public void add(Card newCard) {
 
 		cards.add(newCard);
+		numCards++;
 
 	} // end add()
 
@@ -80,6 +79,7 @@ public class Pile
 		if (!isEmpty()) {
 			Card output;
 			output = cards.remove(0);
+			numCards--;
 			return output;
 		} else {
 			throw new EmptyStackException();
@@ -91,6 +91,7 @@ public class Pile
 		if (!isEmpty()) {
 			Card output;
 			output = cards.remove(index);
+			numCards--;
 			return output;
 		} else {
 			throw new EmptyStackException();
@@ -106,6 +107,10 @@ public class Pile
 		return cards.size();
 	}
 
+	public PileIterator getIterator() {
+		return new PileIterator();
+	}
+
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
@@ -117,6 +122,25 @@ public class Pile
 		
 		}	// end toString()
 
+
+	private class PileIterator implements Iterator<Card> {
+		int currentIndex = 0;
+		@Override
+		public boolean hasNext() {
+			return currentIndex < numCards;
+		}
+
+		@Override
+		public Card next() {
+			if (hasNext()) {
+				currentIndex++;
+				return cards.get(currentIndex);
+			} else {
+				throw new NoSuchElementException("Illegal call to next(); iterator is after end of list.");
+			}
+
+		}
+	}
 
 	/**
 	 * @param args
