@@ -33,7 +33,6 @@ public class Pile
 	{
 	private List<Card> cards ;
 	// instantiate this using either the JCL's ArrayList or LinkedList
-	private int numCards;
 	
 
 	/**
@@ -43,7 +42,6 @@ public class Pile
 		{
 		// TODO Auto-generated constructor stub
 		cards = new LinkedList<>();
-		numCards = 0;
 		
 		}	// end constructor
 
@@ -71,7 +69,6 @@ public class Pile
 	public void add(Card newCard) {
 
 		cards.add(newCard);
-		numCards++;
 
 	} // end add()
 
@@ -83,7 +80,6 @@ public class Pile
 		if (!isEmpty()) {
 			Card output;
 			output = cards.remove(0);
-			numCards--;
 			return output;
 		} else {
 			throw new EmptyStackException();
@@ -95,7 +91,6 @@ public class Pile
 		if (!isEmpty()) {
 			Card output;
 			output = cards.remove(index);
-			numCards--;
 			return output;
 		} else {
 			throw new EmptyStackException();
@@ -104,7 +99,7 @@ public class Pile
 	} // end remove()
 
 	public boolean isEmpty() {
-		return numCards == 0;
+		return cards.isEmpty();
 	}
 
 

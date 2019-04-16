@@ -28,6 +28,7 @@ package edu.wit.dcsn.comp2000.listapp;
 public class Player
 	{
 	private Hand hand ;
+	private Card playedCard = null;
 	
 
 	/**
@@ -50,6 +51,18 @@ public class Player
 
 	public boolean isEmpty() {
 		return hand.isEmpty();
+	}
+
+	public void playCard() {
+		playedCard = hand.remove();
+	}
+
+	public Card getPlayedCard() {
+		return playedCard;
+	}
+
+	public void removePlayedCard() {
+		playedCard = null;
 	}
 
 

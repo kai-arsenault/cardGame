@@ -33,6 +33,15 @@ public class Deck extends Pile
 	public Deck()
 		{
 		// TODO Auto-generated constructor stub
+        Rank[] ranks = {Rank.ACE, Rank.TWO, Rank.THREE, Rank.FOUR, Rank.FIVE, Rank.SIX, Rank.SEVEN, Rank.EIGHT,
+                Rank.NINE, Rank.TEN, Rank.JACK, Rank.QUEEN, Rank.KING};
+        Suit[] suits = {Suit.CLUBS, Suit.DIAMONDS, Suit.HEARTS, Suit.SPADES};
+
+        for (int i = 0; i < ranks.length; i++) {
+            for (int j = 0; j < suits.length; j++) {
+                this.add(new Card(ranks[i], suits[j]));
+            }
+        }
 		
 		}	// end constructor
 

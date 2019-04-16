@@ -33,7 +33,9 @@ public class Game {
 
         int player = 0;
         while (!deck.isEmpty()) {
-            players.get(player).addCard(deck.deal());
+            Card currentCard = deck.deal();
+            players.get(player).addCard(currentCard);
+            System.out.printf("Card %s given to %s%n", currentCard.toString(), players.get(player).toString());
             player++;
             if (player == numPlayers) {
                 player = 0;
@@ -42,7 +44,9 @@ public class Game {
     } // end Game()
 
     public void draw() {
-
+        for (int i = 0; i < numPlayers; i++) {
+            players.get(i).playCard();
+        }
     }
     
     public void take() {
@@ -73,7 +77,7 @@ public class Game {
         
         while (!donePlaying) {
         
-        
+            main.draw();
             main.take();
             main.eliminate();
             main.isOver();
