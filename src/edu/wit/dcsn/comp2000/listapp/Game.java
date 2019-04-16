@@ -81,10 +81,10 @@ public class Game {
     	}
     	
     	if(war) {
-    		war(topPlayer, tiedPlayer);
-    	} else {
-    		take(topPlayer);
+    		topPlayer = war(topPlayer, tiedPlayer);
     	}
+    	
+    	take(topPlayer);
     }
 
     /**
@@ -93,8 +93,10 @@ public class Game {
      * @param player1 player in war
      * @param player2 other player in war
      */
-    public void war(Player player1, Player player2) {
-
+    public Player war(Player player1, Player player2) {
+    	Player winner;
+    	
+    	return winner;
     }
 
     /**
