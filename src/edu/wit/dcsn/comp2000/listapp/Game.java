@@ -17,6 +17,7 @@ public class Game {
 	private static boolean donePlaying = false;
 	private int numPlayers;
 	private Pile pot;
+	private int rounds = 0;
 
 	public Game() {
 		System.out.println("The Game of War");
@@ -80,12 +81,13 @@ public class Game {
 		}
 
 		if (war) {
-			System.out.println("War between Player " + topPlayer.getID() + " and  Player " + tiedPlayer.getID());
+			System.out.println("War between Player " + topPlayer.getID() + " and Player " + tiedPlayer.getID());
 			topPlayer = war(topPlayer, tiedPlayer);
 		}
 
-		System.out.println("Player " + topPlayer.getID() + " wins");
+		System.out.println("Player " + topPlayer.getID() + " wins the round");
 		take(topPlayer);
+		rounds++;
 	}
 
 	/**
@@ -102,14 +104,16 @@ public class Game {
 				pot.add(player1.getPlayedCard());
 				pot.add(player2.getPlayedCard());
 			} // end for
-	
+			
+			System.out.println("Player " + player1.getID() + ": " + player1.getPlayedCard().toString());
+			System.out.println("Player " + player2.getID() + ": " + player2.getPlayedCard().toString());
+			
 			if (player1.getPlayedCard().compareTo(player2.getPlayedCard()) > 0) {
 				return player1;
 			} else if (player1.getPlayedCard().compareTo(player2.getPlayedCard()) < 0) {
 				return player2;
 			} else {
-				war(player1, player2);
-				return null;
+				return war(player1, player2);
 			} // end if
 		} else {
 			if(player1.getCardCount()<4) {
@@ -158,7 +162,7 @@ public class Game {
 
 		if (players.size() == 1) {
 			donePlaying = true;
-			System.out.println("Player " + players.get(0).getID() + " has won the game.");
+			System.out.println("\nPlayer " + players.get(0).getID() + " has won the game in " + rounds + " rounds.");
 		}
 	} // end isOver()
 	
@@ -167,15 +171,16 @@ public class Game {
      	*/
 	public void printGameInfo() {
     	
+		System.out.println();
     	for (Player aPlayer : players)
     	System.out.println("Player " + aPlayer.getID() + " has " + aPlayer.getCardCount() + " cards.");
-    	}
+    }
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Game main = new Game();
 
 		while (!donePlaying) {
