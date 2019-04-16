@@ -66,7 +66,6 @@ public class Game {
 		for (int i = 0; i < players.size(); i++) {
 			players.get(i).playCard();
 			pot.add(players.get(i).getPlayedCard());
-
 			System.out.println("Player " + players.get(i).getID() + ": " + players.get(i).getPlayedCard().toString());
 
 			if (topCard == null) {
