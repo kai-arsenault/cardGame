@@ -74,10 +74,6 @@ public class Game {
      * Eliminates any player with an empty hand
      */
     public void eliminate() {
-    	
-    	for (Player aPlayer : players) {
-    		System.out.println(aPlayer.getID());
-    	}
 
     	ArrayList<Player> eliminated = new ArrayList<>();
     	for (int i = 0; i<players.size(); i++) {
