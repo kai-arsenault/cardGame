@@ -27,7 +27,7 @@ package edu.wit.dcsn.comp2000.listapp;
 public enum Rank
     {
 //  Element     Display Name    Graphic     Points      Alt Points  Priority    Alt Priority
-    ACE     (   "Ace",          "A",        1,          11,         1,          14 ),
+    ACE     (   "Ace",          "A",        1,          11,         15,          14 ),
     TWO     (   "Duece",        "2",        2,          2,          2,          2 ),
     THREE   (   "Three",        "3",        3,          3,          3,          3 ),
     FOUR    (   "Four",         "4",        4,          4,          4,          4 ),
@@ -36,11 +36,10 @@ public enum Rank
     SEVEN   (   "Seven",        "7",        7,          7,          7,          7 ),
     EIGHT   (   "Eight",        "8",        8,          8,          8,          8 ),
     NINE    (   "Nine",         "9",        9,          9,          9,          9 ),
-    TEN     (   "Ten",          "10",       10,         10,         10,         10 ),
-    JACK    (   "Jack",         "J",        10,         10,         10,         10 ),
-    QUEEN   (   "Queen",        "Q",        10,         10,         10,         10 ),
-    KING    (   "King",         "K",        10,         10,         10,         10 ),
-    JOKER   (   "Joker",        "R",        0,          0,          99,         99 )
+    TEN     (   "Ten",          "10",       10,         10,         11,         10 ),
+    JACK    (   "Jack",         "J",        10,         10,         12,         10 ),
+    QUEEN   (   "Queen",        "Q",        10,         10,         13,         10 ),
+    KING    (   "King",         "K",        10,         10,         14,         10 ),
     ;
 
     private final String displayName;
