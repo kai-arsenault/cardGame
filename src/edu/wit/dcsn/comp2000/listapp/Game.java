@@ -86,7 +86,7 @@ public class Game {
 		}
 
 		if (war) {
-			System.out.println("War between Player " + topPlayer.getID() + " and  Player" + tiedPlayer.getID());
+			System.out.println("War between Player " + topPlayer.getID() + " and  Player " + tiedPlayer.getID());
 			topPlayer = war(topPlayer, tiedPlayer);
 		}
 
