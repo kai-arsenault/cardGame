@@ -154,6 +154,15 @@ public class Game {
 			System.out.println("Player " + players.get(0).getID() + " has won the game.");
 		}
 	} // end isOver()
+	
+	/**
+     	* Prints the players still in the game and the number of cards they have.
+     	*/
+	public void printGameInfo() {
+    	
+    	for (Player aPlayer : players)
+    	System.out.println("Player " + aPlayer.getID() + " has " + aPlayer.getCardCount() + " cards.");
+    	}
 
 	/**
 	 * @param args
@@ -163,7 +172,7 @@ public class Game {
 		Game main = new Game();
 
 		while (!donePlaying) {
-
+			main.printGameInfo();
 			main.draw();
 			main.play();
 
