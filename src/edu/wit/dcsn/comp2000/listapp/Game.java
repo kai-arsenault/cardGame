@@ -15,18 +15,15 @@ public class Game {
     private Deck deck;
     private ArrayList<Player> players;
     private static boolean donePlaying = false;
+    private int numPlayers;
 
 
     public Game() {
-
-    } // end Game()
-
-    public void initialize() {
         deck = new Deck();
         players = new ArrayList<>();
 
         Random rand = new Random();
-        int numPlayers = rand.nextInt(3) + 2;
+        numPlayers = rand.nextInt(3) + 2;
 
         for (int i = 0; i < numPlayers; i++) {
             players.add(new Player());
@@ -42,7 +39,11 @@ public class Game {
                 player = 0;
             }
         }
-    } // end initialize()
+    } // end Game()
+
+    public void draw() {
+
+    }
     
     public void take() {
     	// TODO Auto-generated method stub
@@ -64,7 +65,6 @@ public class Game {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         Game main = new Game();
-        main.initialize();
         
         while (!donePlaying) {
         
