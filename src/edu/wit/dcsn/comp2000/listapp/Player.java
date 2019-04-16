@@ -36,7 +36,7 @@ public class Player
 	public Player()
 		{
 		// TODO Auto-generated constructor stub
-		hand = new Hand();
+		this.hand = new Hand();
 		
 		}	// end constructor
 
