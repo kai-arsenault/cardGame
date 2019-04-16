@@ -26,12 +26,14 @@ package edu.wit.dcsn.comp2000.listapp;
  */
 public class Card implements Comparable<Card> {
 
+	Rank rank;
+	Suit suit;
 	/**
 	 * 
 	 */
-	public Card() {
-		// TODO Auto-generated constructor stub
-
+	public Card(Rank rank, Suit suit) {
+		rank = this.rank;
+		suit = this.suit;
 	} // end constructor
 
 	/*
