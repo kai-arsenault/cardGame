@@ -130,7 +130,8 @@ public class Game {
 	 * @param winner Winning player
 	 */
 	public void take(Player winner) {
-
+		// shuffle the pot to avoid a never-ending game
+		pot.shuffle();
 		while (!pot.isEmpty()) {
 
 			winner.addCard(pot.remove());
