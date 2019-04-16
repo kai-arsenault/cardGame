@@ -83,7 +83,7 @@ public class Game {
     	if(war) {
     		war(topPlayer, tiedPlayer);
     	} else {
-    		take();
+    		take(topPlayer);
     	}
     }
 
@@ -97,7 +97,11 @@ public class Game {
 
     }
 
-    public void take() {
+    /**
+     * Moves all cards from pot to winner's hand
+     * @param winner Winning player
+     */
+    public void take(Player winner) {
     	// TODO Auto-generated method stub
     } // end take()
     
@@ -142,7 +146,6 @@ public class Game {
             main.draw();
         	main.play();
 
-            main.take();
             main.eliminate();
             main.isOver();
         }
