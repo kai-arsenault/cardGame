@@ -49,23 +49,53 @@ public class Game {
         }
     }
     
+    /**
+     * Each active player plays top card
+     */
+    public void play() {
+
+    }
+
+    /**
+     * Initiates war sequence
+     *
+     * @param player1 player in war
+     * @param player2 other player in war
+     */
+    public void war(Player player1, Player player2) {
+
+    }
+
     public void take() {
     	// TODO Auto-generated method stub
     } // end take()
     
+    /**
+     * Eliminates any player with an empty hand
+     */
     public void eliminate() {
     	
+    	for (Player aPlayer : players) {
+    		System.out.println(aPlayer.getID());
+    	}
+
     	for (int i = 0; i<players.size(); i++) {
     		if (players.get(i).isEmpty()){
+    			System.out.println("Player " + players.get(i).getID() + " is eliminated from the game.");
     			players.remove(i);
     		}
     	}
     } // end eliminate()
     
+    /**
+     * Ends the game if there's one player left
+     */
     public void isOver() {
     	
-    	if (players.size() == 1) 
+    	if (players.size() == 1) {
     		donePlaying = true;
+    		System.out.println("Player " + players.get(0).getID() + " has won the game.");
+    	}
     } // end isOver()
 
     /**
@@ -78,6 +108,8 @@ public class Game {
         while (!donePlaying) {
         
             main.draw();
+        	main.play();
+
             main.take();
             main.eliminate();
             main.isOver();

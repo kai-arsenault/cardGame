@@ -36,8 +36,7 @@ public class Hand extends Pile
 
 		
 		}	// end constructor
-
-
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
