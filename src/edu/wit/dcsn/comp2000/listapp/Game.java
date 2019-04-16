@@ -101,23 +101,30 @@ public class Game {
 	 * @param player2 other player in war
 	 */
 	public Player war(Player player1, Player player2) {
-		for (int i = 0; i < 4; i++) {
-			pot.add(player1.removePlayedCard());
-			pot.add(player2.removePlayedCard());
-			player1.playCard();
-			player2.playCard();
-
-		}
-
-		if (player1.getPlayedCard().compareTo(player2.getPlayedCard()) > 0) {
-			return player1;
-		} else if (player1.getPlayedCard().compareTo(player2.getPlayedCard()) < 0) {
-			return player2;
+		if(player1.getCardCount() >= 4 && player2.getCardCount() >= 4) {
+			for (int i = 0; i < 4; i++) {
+				player1.playCard();
+				player2.playCard();
+				pot.add(player1.getPlayedCard());
+				pot.add(player2.getPlayedCard());
+			} // end for
+	
+			if (player1.getPlayedCard().compareTo(player2.getPlayedCard()) > 0) {
+				return player1;
+			} else if (player1.getPlayedCard().compareTo(player2.getPlayedCard()) < 0) {
+				return player2;
+			} else {
+				war(player1, player2);
+				return null;
+			} // end if
 		} else {
-			war(player1, player2);
-			return null;
-		}
-	}
+			if(player1.getCardCount()<4) {
+				return player2;
+			} else {
+				return player1;
+			} // end if
+		} // end if
+	} // end war()
 
 	/**
 	 * Moves all cards from pot to winner's hand
