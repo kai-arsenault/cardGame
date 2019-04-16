@@ -40,7 +40,7 @@ public class Game {
 		while (!deck.isEmpty()) {
 			Card currentCard = deck.deal();
 			players.get(player).addCard(currentCard);
-			System.out.printf("Card %s given to %s%n", currentCard.toString(), players.get(player).getID());
+			//System.out.printf("Card %s given to %s%n", currentCard.toString(), players.get(player).getID());
 			player++;
 			if (player == numPlayers) {
 				player = 0;
