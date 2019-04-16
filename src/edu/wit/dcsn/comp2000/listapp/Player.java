@@ -36,8 +36,21 @@ public class Player
 	public Player()
 		{
 		// TODO Auto-generated constructor stub
+		hand = new Hand();
 		
 		}	// end constructor
+
+	public void addCard(Card newCard) {
+		hand.add(newCard);
+	}
+
+	public Card removeCard() {
+		return hand.remove();
+	}
+
+	public boolean isEmpty() {
+		return hand.isEmpty();
+	}
 
 
 	/**

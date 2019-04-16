@@ -33,9 +33,18 @@ public class Game {
         }
 
         deck.shuffle();
+
+        int player = 0;
+        while (!deck.isEmpty()) {
+            players.get(player).addCard(deck.deal());
+            player++;
+            if (player == numPlayers) {
+                player = 0;
+            }
+        }
     } // end initialize()
     
-        public void take() {
+    public void take() {
     	// TODO Auto-generated method stub
     } // end take()
     

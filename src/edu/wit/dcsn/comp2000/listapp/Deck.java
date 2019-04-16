@@ -40,8 +40,7 @@ public class Deck extends Pile
 	 * @return dealt card
 	 */
 	public Card deal() {
-		// TODO Auto-generated constructor stub
-		return null;
+		return this.remove();
 	} // end deal()
 
 

@@ -20,6 +20,7 @@
 package edu.wit.dcsn.comp2000.listapp;
 
 import java.util.Collections;
+import java.util.EmptyStackException;
 import java.util.LinkedList;
 import java.util.List ;
 
@@ -79,24 +80,30 @@ public class Pile
 	 * @return Card removed from the deck
 	 */
 	public Card remove() {
-		Card output;
-		output = cards.remove(0);
-		numCards--;
-		return output;
+		if (!isEmpty()) {
+			Card output;
+			output = cards.remove(0);
+			numCards--;
+			return output;
+		} else {
+			throw new EmptyStackException();
+		}
 
 	} // end remove()
 
-	/**
-	 *	shuffles the order of the deck
-	 */
-	public int search() {
+	public Card remove(int index) {
+		if (!isEmpty()) {
+			Card output;
+			output = cards.remove(index);
+			numCards--;
+			return output;
+		} else {
+			throw new EmptyStackException();
+		}
 
+	} // end remove()
 
-		return -1;
-
-	} // end search()
-
-	private boolean isEmpty() {
+	public boolean isEmpty() {
 		return numCards == 0;
 	}
 

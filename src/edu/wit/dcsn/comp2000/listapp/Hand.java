@@ -33,7 +33,7 @@ public class Hand extends Pile
 	 */
 	public Hand()
 		{
-		// TODO Auto-generated constructor stub
+
 		
 		}	// end constructor
 
