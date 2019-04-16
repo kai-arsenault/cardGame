@@ -19,6 +19,9 @@ public class Game {
 	private Pile pot;
 
 	public Game() {
+		System.out.println("The Game of War");
+		System.out.println();
+		
 		deck = new Deck();
 		pot = new Pile();
 		players = new ArrayList<>();
