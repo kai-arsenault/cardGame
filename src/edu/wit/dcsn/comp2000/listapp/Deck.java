@@ -20,8 +20,8 @@
 package edu.wit.dcsn.comp2000.listapp;
 
 /**
- * @author 
- * @version 
+ * @author
+ * @version
  *
  */
 public class Deck extends Pile
