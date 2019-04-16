@@ -43,8 +43,7 @@ public class Card implements Comparable<Card> {
 	 */
 	@Override
 	public int compareTo(Card o) {
-		// TODO Auto-generated method stub
-		return 0;
+		return rank.getPriority() - o.rank.getPriority();
 
 	} // end compareTo()
 
@@ -56,8 +55,8 @@ public class Card implements Comparable<Card> {
 	@Override
 	public boolean equals(Object o) {
 		// TODO Auto-generated method stub
+		
 		return false;
-
 	} // end equals()
 
 	/*
