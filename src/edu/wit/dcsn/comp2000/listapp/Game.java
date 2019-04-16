@@ -20,6 +20,7 @@ public class Game {
 
 	public Game() {
 		deck = new Deck();
+		pot = new Pile();
 		players = new ArrayList<>();
 
 		Random rand = new Random();
@@ -98,10 +99,11 @@ public class Game {
 	 */
 	public Player war(Player player1, Player player2) {
 		for (int i = 0; i < 4; i++) {
+			pot.add(player1.removePlayedCard());
+			pot.add(player2.removePlayedCard());
 			player1.playCard();
 			player2.playCard();
-			pot.add(player1.getPlayedCard());
-			pot.add(player2.getPlayedCard());
+
 		}
 
 		if (player1.getPlayedCard().compareTo(player2.getPlayedCard()) > 0) {
