@@ -36,16 +36,6 @@ public class Hand extends Pile
 
 		
 		}	// end constructor
-
-
-	/**
-	 * Checks to see if hand contains a card
-	 * @param card that the hand is searched for
-	 * @return true if card is found, false if card is not found
-	 */
-	public boolean contains(Card card) {
-		return true;
-	}
 	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
