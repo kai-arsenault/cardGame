@@ -12,163 +12,165 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Game {
-    private Deck deck;
-    private ArrayList<Player> players;
-    private static boolean donePlaying = false;
-    private int numPlayers;
-    private Pile pot;
+	private Deck deck;
+	private ArrayList<Player> players;
+	private static boolean donePlaying = false;
+	private int numPlayers;
+	private Pile pot;
 
+	public Game() {
+		deck = new Deck();
+		players = new ArrayList<>();
 
-    public Game() {
-        deck = new Deck();
-        players = new ArrayList<>();
+		Random rand = new Random();
+		numPlayers = rand.nextInt(3) + 2;
 
-        Random rand = new Random();
-        numPlayers = rand.nextInt(3) + 2;
+		for (int i = 0; i < numPlayers; i++) {
+			players.add(new Player());
+		}
 
-        for (int i = 0; i < numPlayers; i++) {
-            players.add(new Player());
-        }
+		deck.shuffle();
 
-        deck.shuffle();
+		int player = 0;
+		while (!deck.isEmpty()) {
+			Card currentCard = deck.deal();
+			players.get(player).addCard(currentCard);
+			System.out.printf("Card %s given to %s%n", currentCard.toString(), players.get(player).getID());
+			player++;
+			if (player == numPlayers) {
+				player = 0;
+			}
+		}
+	} // end Game()
 
-        int player = 0;
-        while (!deck.isEmpty()) {
-            Card currentCard = deck.deal();
-            players.get(player).addCard(currentCard);
-            System.out.printf("Card %s given to %s%n", currentCard.toString(), players.get(player).getID());
-            player++;
-            if (player == numPlayers) {
-                player = 0;
-            }
-        }
-    } // end Game()
+	public void draw() {
+		for (int i = 0; i < numPlayers; i++) {
+			players.get(i).playCard();
+		}
+	}
 
-    public void draw() {
-        for (int i = 0; i < numPlayers; i++) {
-            players.get(i).playCard();
-        }
-    }
-    
-    /**
-     * Each active player plays top card
-     */
-    public void play() {
-    	// Reset pot
-    	while(!pot.isEmpty()) {
-    		pot.remove();
-    	}
-    	
-    	Card topCard = null; 
-    	boolean war = false;
-    	Player topPlayer = null;
-    	Player tiedPlayer = null;
-    	
-    	for(int i = 0; i < players.size(); i++) {
-    		players.get(i).playCard();
-    		pot.add(players.get(i).getPlayedCard());
-    		
-    		if(topCard == null) {
-    			topPlayer = players.get(i);
-    			topCard = players.get(i).getPlayedCard();
-    		} else if(players.get(i).getPlayedCard().compareTo(topCard) > 0) {
-    			topPlayer = players.get(i);
-    			topCard = players.get(i).getPlayedCard();
-    			war = false;
-    		} else if(players.get(i).getPlayedCard().equals(topCard)) {
-    			tiedPlayer = players.get(i);
-    			war = true;
-    		}
-    	}
-    	
-    	if(war) {
-    		topPlayer = war(topPlayer, tiedPlayer);
-    	}
-    	
-    	take(topPlayer);
-    }
+	/**
+	 * Each active player plays top card
+	 */
+	public void play() {
+		// Reset pot
+		while (!pot.isEmpty()) {
+			pot.remove();
+		}
 
-    /**
-     * Initiates war sequence
-     *
-     * @param player1 player in war
-     * @param player2 other player in war
-     */
-    public Player war(Player player1, Player player2) {
-    	for(int i = 0; i < 4; i++) {
-    		player1.playCard();
-    		player2.playCard();
-    		pot.add(player1.getPlayedCard());
-    		pot.add(player2.getPlayedCard());
-    	}
-    	
-    	if(player1.getPlayedCard().compareTo(player2.getPlayedCard()) > 0) {
-    		return player1;
-    	} else if(player1.getPlayedCard().compareTo(player2.getPlayedCard()) < 0) {
-    		return player2;
-    	} else {
-    		war(player1, player2);
-    		return null;
-    	}
-    }
+		Card topCard = null;
+		boolean war = false;
+		Player topPlayer = null;
+		Player tiedPlayer = null;
 
-    /**
-     * Moves all cards from pot to winner's hand
-     * @param winner Winning player
-     */
-    public void take(Player winner) {
-    
-    	while (!pot.isEmpty()) {
-    		
-            winner.addCard(pot.remove());
-    	}
-    } // end take()
-    
-    /**
-     * Eliminates any player with an empty hand
-     */
-    public void eliminate() {
+		for (int i = 0; i < players.size(); i++) {
+			players.get(i).playCard();
+			pot.add(players.get(i).getPlayedCard());
 
-    	ArrayList<Player> eliminated = new ArrayList<>();
-    	for (int i = 0; i<players.size(); i++) {
-    		if (players.get(i).isEmpty()){
-    			System.out.println("Player " + players.get(i).getID() + " is eliminated from the game.");
-    			eliminated.add(players.get(i));
+			if (topCard == null) {
+				topPlayer = players.get(i);
+				topCard = players.get(i).getPlayedCard();
+			} else if (players.get(i).getPlayedCard().compareTo(topCard) > 0) {
+				topPlayer = players.get(i);
+				topCard = players.get(i).getPlayedCard();
+				war = false;
+			} else if (players.get(i).getPlayedCard().equals(topCard)) {
+				tiedPlayer = players.get(i);
+				war = true;
+			}
+		}
 
-    		}
-    	}
-    	for (Player player : eliminated) {
-    	    players.remove(player);
-        }
-    } // end eliminate()
-    
-    /**
-     * Ends the game if there's one player left
-     */
-    public void isOver() {
-    	
-    	if (players.size() == 1) {
-    		donePlaying = true;
-    		System.out.println("Player " + players.get(0).getID() + " has won the game.");
-    	}
-    } // end isOver()
+		if (war) {
+			System.out.println("War between Player " + topPlayer.getID() + " and  Player" + tiedPlayer.getID());
+			topPlayer = war(topPlayer, tiedPlayer);
+		}
 
-    /**
-     * @param args
-     */
-    public static void main(String[] args) {
-        // TODO Auto-generated method stub
-        Game main = new Game();
-        
-        while (!donePlaying) {
-        
-            main.draw();
-        	main.play();
+		System.out.println("Player " + topPlayer.getID() + " wins");
+		take(topPlayer);
+	}
 
-            main.eliminate();
-            main.isOver();
-        }
-        
-    }	// end main()
+	/**
+	 * Initiates war sequence
+	 *
+	 * @param player1 player in war
+	 * @param player2 other player in war
+	 */
+	public Player war(Player player1, Player player2) {
+		for (int i = 0; i < 4; i++) {
+			player1.playCard();
+			player2.playCard();
+			pot.add(player1.getPlayedCard());
+			pot.add(player2.getPlayedCard());
+		}
+
+		if (player1.getPlayedCard().compareTo(player2.getPlayedCard()) > 0) {
+			return player1;
+		} else if (player1.getPlayedCard().compareTo(player2.getPlayedCard()) < 0) {
+			return player2;
+		} else {
+			war(player1, player2);
+			return null;
+		}
+	}
+
+	/**
+	 * Moves all cards from pot to winner's hand
+	 * 
+	 * @param winner Winning player
+	 */
+	public void take(Player winner) {
+
+		while (!pot.isEmpty()) {
+
+			winner.addCard(pot.remove());
+		}
+	} // end take()
+
+	/**
+	 * Eliminates any player with an empty hand
+	 */
+	public void eliminate() {
+
+		ArrayList<Player> eliminated = new ArrayList<>();
+		for (int i = 0; i < players.size(); i++) {
+			if (players.get(i).isEmpty()) {
+				System.out.println("Player " + players.get(i).getID() + " is eliminated from the game.");
+				eliminated.add(players.get(i));
+
+			}
+		}
+		for (Player player : eliminated) {
+			players.remove(player);
+		}
+	} // end eliminate()
+
+	/**
+	 * Ends the game if there's one player left
+	 */
+	public void isOver() {
+
+		if (players.size() == 1) {
+			donePlaying = true;
+			System.out.println("Player " + players.get(0).getID() + " has won the game.");
+		}
+	} // end isOver()
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Game main = new Game();
+
+		while (!donePlaying) {
+
+			main.draw();
+			main.play();
+
+			main.eliminate();
+			main.isOver();
+		}
+
+	} // end main()
 
 } // end class Game
