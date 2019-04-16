@@ -101,6 +101,10 @@ public class Pile
 	public boolean isEmpty() {
 		return cards.isEmpty();
 	}
+	
+	public int getSize() {
+		return cards.size();
+	}
 
 
 	/* (non-Javadoc)

@@ -67,6 +67,10 @@ public class Player
 	public void removePlayedCard() {
 		playedCard = null;
 	}
+	
+	public int getCardCount() {
+		return hand.getSize();
+	}
 
 
 	/**
