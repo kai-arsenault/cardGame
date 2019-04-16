@@ -47,12 +47,6 @@ public class Game {
 		}
 	} // end Game()
 
-	public void draw() {
-		for (int i = 0; i < players.size(); i++) {
-			players.get(i).playCard();
-		}
-	}
-
 	/**
 	 * Each active player plays top card
 	 */
