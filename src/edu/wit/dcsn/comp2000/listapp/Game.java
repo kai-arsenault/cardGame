@@ -66,6 +66,7 @@ public class Game {
     	
     	for(int i = 0; i < players.size(); i++) {
     		players.get(i).playCard();
+    		pot.add(players.get(i).getPlayedCard());
     		
     		if(topCard == null) {
     			topPlayer = players.get(i);
@@ -78,7 +79,6 @@ public class Game {
     			tiedPlayer = players.get(i);
     			war = true;
     		}
-    		pot.add(players.get(i).getPlayedCard());
     	}
     	
     	if(war) {
