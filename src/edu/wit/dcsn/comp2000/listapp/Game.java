@@ -30,6 +30,8 @@ public class Game {
         for (int i = 0; i < numPlayers; i++) {
             players.add(new Player());
         }
+
+        deck.shuffle();
     } // end initialize()
 
     /**

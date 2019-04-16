@@ -19,17 +19,20 @@
 
 package edu.wit.dcsn.comp2000.listapp;
 
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List ;
 
 /**
- * @author 
- * @version
+ * @author Michael Rivnak
+ * @version 0.1
  *
  */
 public class Pile
 	{
 	private List<Card> cards ;
 	// instantiate this using either the JCL's ArrayList or LinkedList
+	private int numCards;
 	
 
 	/**
@@ -38,8 +41,64 @@ public class Pile
 	public Pile()
 		{
 		// TODO Auto-generated constructor stub
+		cards = new LinkedList<>();
+		numCards = 0;
 		
 		}	// end constructor
+
+	/**
+	 *	Shuffles the order of the Pile
+	 */
+	public void shuffle() {
+
+		Collections.shuffle(cards);
+
+	} // end shuffle()
+
+	/**
+	 *	Sorts the pile
+	 */
+	public void sort() {
+
+		Collections.sort(cards);
+
+	} // end sort()
+
+	/**
+	 * Add a new card to the pile
+	 */
+	public void add(Card newCard) {
+
+		cards.add(newCard);
+		numCards++;
+
+	} // end add()
+
+	/**
+	 *	Removes a card from the pile
+	 * @return Card removed from the deck
+	 */
+	public Card remove() {
+		Card output;
+		output = cards.remove(0);
+		numCards--;
+		return output;
+
+	} // end remove()
+
+	/**
+	 *	shuffles the order of the deck
+	 */
+	public int search() {
+
+
+		return -1;
+
+	} // end search()
+
+	private boolean isEmpty() {
+		return numCards == 0;
+	}
 
 
 	/* (non-Javadoc)

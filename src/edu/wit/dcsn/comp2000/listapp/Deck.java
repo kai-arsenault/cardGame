@@ -20,8 +20,8 @@
 package edu.wit.dcsn.comp2000.listapp;
 
 /**
- * @author
- * @version
+ * @author Michael Rivnak
+ * @version 0.1
  *
  */
 public class Deck extends Pile
@@ -35,6 +35,15 @@ public class Deck extends Pile
 		// TODO Auto-generated constructor stub
 		
 		}	// end constructor
+
+	/**
+	 * @return dealt card
+	 */
+	public Card deal() {
+		// TODO Auto-generated constructor stub
+		return null;
+	} // end deal()
+
 
 
 	/**
