@@ -117,7 +117,11 @@ public class Game {
      * @param winner Winning player
      */
     public void take(Player winner) {
-    	// TODO Auto-generated method stub
+    
+    	while (!pot.isEmpty()) {
+    		
+            winner.addCard(pot.remove());
+    	}
     } // end take()
     
     /**
