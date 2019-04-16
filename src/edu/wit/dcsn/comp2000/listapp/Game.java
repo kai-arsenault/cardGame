@@ -14,6 +14,7 @@ import java.util.Random;
 public class Game {
     private Deck deck;
     private ArrayList<Player> players;
+    private static boolean donePlaying = false;
 
 
     public Game() {
@@ -33,6 +34,20 @@ public class Game {
 
         deck.shuffle();
     } // end initialize()
+    
+        public void take() {
+    	// TODO Auto-generated method stub
+    } // end take()
+    
+    public void eliminate() {
+    	// TODO Auto-generated method stub
+    } // end eliminate()
+    
+    public void isOver() {
+    	
+    	if (players.size() == 1) 
+    		donePlaying = true;
+    } // end isOver()
 
     /**
      * @param args
@@ -41,6 +56,15 @@ public class Game {
         // TODO Auto-generated method stub
         Game main = new Game();
         main.initialize();
+        
+        while (!donePlaying) {
+        
+        
+            main.take();
+            main.eliminate();
+            main.isOver();
+        }
+        
     }	// end main()
 
 } // end class Game
