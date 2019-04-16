@@ -55,7 +55,6 @@ public class Pile
 	public Card removeTopCard() {
 		Card topCard = cards.get(0);
 		cards.remove(0);
-		
 		return topCard;
 	}
 	/**
