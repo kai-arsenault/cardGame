@@ -29,7 +29,7 @@ public class Player
 	{
 	private Hand hand ;
 	private Card playedCard = null;
-	private static int nextId = 0;
+	private static int nextId = 1;
 	private final int id;
 
 	/**
