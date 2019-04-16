@@ -53,8 +53,8 @@ public class Card implements Comparable<Card> {
 	 */
 	@Override
 	public boolean equals(Object o) {
-		// TODO Auto-generated method stub
-		
+		if(compareTo((Card) o) == 0)
+			return true;
 		return false;
 	} // end equals()
 
@@ -65,8 +65,7 @@ public class Card implements Comparable<Card> {
 	 */
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
+		return rank.toString() + " " + suit.toString();
 
 	} // end toString()
 
