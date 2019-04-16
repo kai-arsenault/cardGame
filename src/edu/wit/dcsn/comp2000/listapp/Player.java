@@ -64,8 +64,10 @@ public class Player
 		return playedCard;
 	}
 
-	public void removePlayedCard() {
+	public Card removePlayedCard() {
+	    Card output = playedCard;
 		playedCard = null;
+		return output;
 	}
 
 

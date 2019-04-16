@@ -46,16 +46,6 @@ public class Pile
 		}	// end constructor
 
 	/**
-	 * Removes the top card
-	 * 
-	 * @return the top card that was removed
-	 */
-	public Card removeTopCard() {
-		Card topCard = cards.get(0);
-		cards.remove(0);
-		return topCard;
-	}
-	/**
 	 *	Shuffles the order of the Pile
 	 */
 	public void shuffle() {
