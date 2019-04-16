@@ -26,14 +26,17 @@ package edu.wit.dcsn.comp2000.listapp;
  */
 public class Card implements Comparable<Card> {
 
-	Rank rank;
-	Suit suit;
+	private Rank rank;
+	private Suit suit;
+	private int priority;
+	
 	/**
 	 * 
 	 */
 	public Card(Rank rank, Suit suit) {
 		rank = this.rank;
 		suit = this.suit;
+		priority =  rank.getPriority();
 	} // end constructor
 
 	/*
@@ -65,16 +68,36 @@ public class Card implements Comparable<Card> {
 	 */
 	@Override
 	public String toString() {
-		return rank.toString() + " " + suit.toString();
-
+		System.out.println(rank.toString());
+		System.out.println(suit.toString());
+		String string = rank.toString() + " " + suit.toString();
+		return string;
 	} // end toString()
 
+	public Rank getRank() {
+		return rank;
+	}
+	
+	public Suit getSuit() {
+		return suit;
+	}
+	
+	public int getPriority() {
+		return priority;
+	}
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		//Rank rank1 = new Rank(Rank.ACE.getDisplayName(), Rank.ACE.getGraphic(), Rank.ACE.getPoints(), Rank.ACE.getAltPoints(), Rank.ACE.getPriority(), Rank.ACE.getAltPriority());
+		
+		Card card1 = new Card(Rank.ACE, Suit.CLUBS);
+		Card card2 = new Card(Rank.JACK, Suit.HEARTS);
+		
+		Rank rank = card1.getRank();
+		System.out.println(rank.getPriority());
+		card1.compareTo(card2);
+		System.out.println(card1.toString() + " " + card2.toString());
 	} // end main()
 
 } // end class Card
