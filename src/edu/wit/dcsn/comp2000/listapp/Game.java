@@ -117,8 +117,10 @@ public class Game {
 			} // end if
 		} else {
 			if(player1.getCardCount()<4) {
+				System.out.println("Player " + player1.getID() + " doesn't have enough cards to fight the war.");
 				return player2;
 			} else {
+				System.out.println("Player " + player2.getID() + " doesn't have enough cards to fight the war.");
 				return player1;
 			} // end if
 		} // end if
