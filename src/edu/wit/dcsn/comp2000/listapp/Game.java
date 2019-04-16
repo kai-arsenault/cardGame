@@ -180,9 +180,7 @@ public class Game {
 
 		while (!donePlaying) {
 			main.printGameInfo();
-			main.draw();
 			main.play();
-
 			main.eliminate();
 			main.isOver();
 		}
