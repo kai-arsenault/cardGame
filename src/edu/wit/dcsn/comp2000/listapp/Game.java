@@ -35,7 +35,7 @@ public class Game {
         while (!deck.isEmpty()) {
             Card currentCard = deck.deal();
             players.get(player).addCard(currentCard);
-            System.out.printf("Card %s given to %s%n", currentCard.toString(), players.get(player).toString());
+            System.out.printf("Card %s given to %s%n", currentCard.toString(), players.get(player).getID());
             player++;
             if (player == numPlayers) {
                 player = 0;
@@ -79,12 +79,17 @@ public class Game {
     		System.out.println(aPlayer.getID());
     	}
 
+    	ArrayList<Player> eliminated = new ArrayList<>();
     	for (int i = 0; i<players.size(); i++) {
     		if (players.get(i).isEmpty()){
     			System.out.println("Player " + players.get(i).getID() + " is eliminated from the game.");
-    			players.remove(i);
+    			eliminated.add(players.get(i));
+
     		}
     	}
+    	for (Player player : eliminated) {
+    	    players.remove(player);
+        }
     } // end eliminate()
     
     /**
