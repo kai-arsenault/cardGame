@@ -19,26 +19,28 @@
 
 package edu.wit.dcsn.comp2000.listapp;
 
-
 /**
  * @author 
  * @version
  *
  */
-public class Player
-	{
-	private Hand hand ;
+public class Player {
 	
+	private Hand hand;
+	private static int nextId = 0;
+	private final int id;
 
 	/**
 	 * 
 	 */
-	public Player()
-		{
-		// TODO Auto-generated constructor stub
+	public Player() {
 		this.hand = new Hand();
-		
-		}	// end constructor
+		id = Player.nextId++;
+	}	// end constructor
+	
+	public int getID() {
+		return id; 
+	}
 
 	public void addCard(Card newCard) {
 		hand.add(newCard);
