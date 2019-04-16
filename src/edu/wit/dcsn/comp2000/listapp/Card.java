@@ -19,69 +19,63 @@
 
 package edu.wit.dcsn.comp2000.listapp;
 
-
 /**
- * @author 
- * @version
+ * @author Kai Arsenault
+ * @version 1.0.0 initial implementation
  *
  */
-public class Card implements Comparable<Card>
-	{
+public class Card implements Comparable<Card> {
 
 	/**
 	 * 
 	 */
-	public Card()
-		{
+	public Card() {
 		// TODO Auto-generated constructor stub
-		
-		}	// end constructor
 
+	} // end constructor
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
 	 */
 	@Override
-	public int compareTo( Card o )
-		{
+	public int compareTo(Card o) {
 		// TODO Auto-generated method stub
-		return 0 ;
-		
-		}	// end compareTo()
+		return 0;
 
+	} // end compareTo()
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Comparable#equals(java.lang.Object)
 	 */
 	@Override
-	public boolean equals( Object o )
-		{
+	public boolean equals(Object o) {
 		// TODO Auto-generated method stub
-		return false ;
-		
-		}	// end equals()
-	
+		return false;
 
-	/* (non-Javadoc)
+	} // end equals()
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString()
-		{
+	public String toString() {
 		// TODO Auto-generated method stub
-		return null ;
-		
-		}	// end toString()
+		return null;
 
+	} // end toString()
 
 	/**
 	 * @param args
 	 */
-	public static void main( String[] args )
-		{
+	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		}	// end main()
+	} // end main()
 
-	}	// end class Card
+} // end class Card
