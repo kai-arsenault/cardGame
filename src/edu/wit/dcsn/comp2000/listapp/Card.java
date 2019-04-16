@@ -28,15 +28,13 @@ public class Card implements Comparable<Card> {
 
 	private Rank rank;
 	private Suit suit;
-	private int priority;
 	
 	/**
 	 * 
 	 */
 	public Card(Rank rank, Suit suit) {
-		rank = this.rank;
-		suit = this.suit;
-		priority =  rank.getPriority();
+		this.rank = rank;
+		this.suit = suit;
 	} // end constructor
 
 	/*
@@ -68,9 +66,7 @@ public class Card implements Comparable<Card> {
 	 */
 	@Override
 	public String toString() {
-		System.out.println(rank.toString());
-		System.out.println(suit.toString());
-		String string = rank.toString() + " " + suit.toString();
+		String string = rank.toString()+suit.toString();
 		return string;
 	} // end toString()
 
@@ -82,21 +78,14 @@ public class Card implements Comparable<Card> {
 		return suit;
 	}
 	
-	public int getPriority() {
-		return priority;
-	}
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		//Rank rank1 = new Rank(Rank.ACE.getDisplayName(), Rank.ACE.getGraphic(), Rank.ACE.getPoints(), Rank.ACE.getAltPoints(), Rank.ACE.getPriority(), Rank.ACE.getAltPriority());
-		
 		Card card1 = new Card(Rank.ACE, Suit.CLUBS);
 		Card card2 = new Card(Rank.JACK, Suit.HEARTS);
 		
-		Rank rank = card1.getRank();
-		System.out.println(rank.getPriority());
-		card1.compareTo(card2);
+		System.out.println(card1.compareTo(card2));
 		System.out.println(card1.toString() + " " + card2.toString());
 	} // end main()
 
