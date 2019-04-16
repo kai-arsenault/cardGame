@@ -78,6 +78,7 @@ public class Game {
     			tiedPlayer = players.get(i);
     			war = true;
     		}
+    		pot.add(players.get(i).getPlayedCard());
     	}
     	
     	if(war) {
@@ -94,9 +95,21 @@ public class Game {
      * @param player2 other player in war
      */
     public Player war(Player player1, Player player2) {
-    	Player winner;
+    	for(int i = 0; i < 4; i++) {
+    		player1.playCard();
+    		player2.playCard();
+    		pot.add(player1.getPlayedCard());
+    		pot.add(player2.getPlayedCard());
+    	}
     	
-    	return winner;
+    	if(player1.getPlayedCard().compareTo(player2.getPlayedCard()) > 0) {
+    		return player1;
+    	} else if(player1.getPlayedCard().compareTo(player2.getPlayedCard()) < 0) {
+    		return player2;
+    	} else {
+    		war(player1, player2);
+    		return null;
+    	}
     }
 
     /**
