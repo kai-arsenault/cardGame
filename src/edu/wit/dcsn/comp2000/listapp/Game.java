@@ -45,6 +45,23 @@ public class Game {
 
     }
     
+    /**
+     * Each active player plays top card
+     */
+    public void play() {
+    	
+    }
+    
+    /**
+     * Initiates war sequence
+     * 
+     * @param player1 player in war
+     * @param player2 other player in war
+     */
+    public void war(Player player1, Player player2) {
+    	
+    }
+    
     public void take() {
     	// TODO Auto-generated method stub
     } // end take()
@@ -73,7 +90,8 @@ public class Game {
         
         while (!donePlaying) {
         
-        
+        	main.play();
+        	
             main.take();
             main.eliminate();
             main.isOver();
