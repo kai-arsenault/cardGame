@@ -50,7 +50,12 @@ public class Game {
     } // end take()
     
     public void eliminate() {
-    	// TODO Auto-generated method stub
+    	
+    	for (int i = 0; i<players.size(); i++) {
+    		if (players.get(i).isEmpty()){
+    			players.remove(i);
+    		}
+    	}
     } // end eliminate()
     
     public void isOver() {
