@@ -11,15 +11,22 @@ package edu.wit.dcsn.comp2000.listapp;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * @author Michael Rivnak
+ * @author Kai Arsenault
+ * @author Ernest Shedden
+ * @version 1.0.0
+ */
 public class Game {
+	
 	private Deck deck;
 	private ArrayList<Player> players;
-	private static boolean donePlaying = false;
 	private int numPlayers;
 	private Pile pot;
 	private int rounds = 0;
 
 	public Game() {
+		
 		System.out.println("The Game of War");
 		System.out.println();
 		
@@ -29,6 +36,7 @@ public class Game {
 
 		Random rand = new Random();
 		numPlayers = rand.nextInt(3) + 2;
+		System.out.println(numPlayers + " players generated.");
 
 		for (int i = 0; i < numPlayers; i++) {
 			players.add(new Player());
@@ -52,10 +60,6 @@ public class Game {
 	 * Each active player plays top card
 	 */
 	public void play() {
-		// Reset pot
-		while (!pot.isEmpty()) {
-			pot.remove();
-		}
 
 		Card topCard = null;
 		boolean war = false;
@@ -79,13 +83,11 @@ public class Game {
 				war = true;
 			}
 		}
-
 		if (war) {
 			System.out.println("War between Player " + topPlayer.getID() + " and Player " + tiedPlayer.getID());
 			topPlayer = war(topPlayer, tiedPlayer);
 		}
-
-		System.out.println("Player " + topPlayer.getID() + " wins the round");
+		System.out.println("Player " + topPlayer.getID() + " wins the round.");
 		take(topPlayer);
 		rounds++;
 	}
@@ -97,6 +99,7 @@ public class Game {
 	 * @param player2 other player in war
 	 */
 	public Player war(Player player1, Player player2) {
+		
 		if(player1.getCardCount() >= 4 && player2.getCardCount() >= 4) {
 			for (int i = 0; i < 4; i++) {
 				player1.playCard();
@@ -132,8 +135,9 @@ public class Game {
 	 * @param winner Winning player
 	 */
 	public void take(Player winner) {
-		// shuffle the pot to avoid a never-ending game
-		pot.shuffle();
+		
+		pot.shuffle();				// shuffle the pot to avoid a never-ending game
+		
 		while (!pot.isEmpty()) {
 
 			winner.addCard(pot.remove());
@@ -150,7 +154,6 @@ public class Game {
 			if (players.get(i).isEmpty()) {
 				System.out.println("Player " + players.get(i).getID() + " is eliminated from the game.");
 				eliminated.add(players.get(i));
-
 			}
 		}
 		for (Player player : eliminated) {
@@ -160,39 +163,39 @@ public class Game {
 
 	/**
 	 * Ends the game if there's one player left
+	 * @return true if game is over
 	 */
-	public void isOver() {
+	public boolean isOver() {
 
 		if (players.size() == 1) {
-			donePlaying = true;
 			System.out.println("\nPlayer " + players.get(0).getID() + " has won the game in " + rounds + " rounds.");
+			return true;
 		}
+		return false;
 	} // end isOver()
 	
 	/**
-     	* Prints the players still in the game and the number of cards they have.
-     	*/
+    * Prints the players still in the game and the number of cards they have.
+    */
 	public void printGameInfo() {
     	
 		System.out.println();
     	for (Player aPlayer : players)
     	System.out.println("Player " + aPlayer.getID() + " has " + aPlayer.getCardCount() + " cards.");
-    }
+    } // end printGameInfo
 
 	/**
+	 * Main game
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		
 		Game main = new Game();
-
-		while (!donePlaying) {
+		
+		while (!main.isOver()) {	// main game loop
 			main.printGameInfo();
 			main.play();
 			main.eliminate();
-			main.isOver();
 		}
-
 	} // end main()
-
 } // end class Game
